@@ -11,7 +11,6 @@ $('#submitButton').on('click', totalMonthly);
 $('#newEmployee').on('click', '#getRid', getRid);
 }
 
-
 function NewEmployee() {  
   
   // Takes input from user, turns them into values to be added to an object  
@@ -29,8 +28,9 @@ function NewEmployee() {
     title: addTitle,
     annualSalary: addAnnualSalary
   }
-
-  //pushes annual salary to an array for total monthly 
+  console.log('New employee added');
+  
+  //stores annual salary in an array for total monthly 
   employeeSalaries.push(neo.annualSalary)
 
   //appends neo info to DOM
@@ -41,7 +41,7 @@ function NewEmployee() {
       <td>${neo.id}</td>
       <td>${neo.title}</td>
       <td>${neo.annualSalary}</td>
-      <td><button id='getRid'>Delete</button></td>
+      <td><button id='getRid' class = 'button'>Delete</button></td>
      </tr>`);
 }
 
@@ -61,7 +61,7 @@ function totalMonthly() {
   if (total >= 20000) {
     let el = $('#mt');
     el.empty();
-    el.append(`<h4> Total Monthly: $` + Math.round(total/12) + `</h4>`)
+    el.append(`<h4> Total Monthly: $` + Math.round(total/12) + `!</h4>`)
     $('.mt').addClass('red')
   }
   console.log('Total Monthly working');
@@ -70,8 +70,8 @@ function totalMonthly() {
 // Deletes the row of the button you click
 function getRid() {
   ($(this).parent().parent().remove());
-  console.log('this is', $(this).parent());
   console.log('Get Rid is running');
+  console.log($(this).parent().parent(), 'has been deleted');
 }
 
 
