@@ -3,19 +3,13 @@ $(document).ready(readyNow);
 console.log('JS Working');
 
 const maxEmployees = 10;
+employeeSalaries = []
 
 function readyNow(){
 $('#submitButton').on('click', grabEmployeeInfo);
 // $('#submitButton').on('click', addNewEmployee);
 $('#submitButton').on('click', totalMonthly);
 $('#newEmployee').on('click', '#getRid', getRid);
-}
-
-// Deletes the row of the button you click
-function getRid() {
-  ($(this).parent().parent().remove());
-  console.log('this is', $(this).parent());
-  console.log('Get Rid is running');
 }
 
 // Takes input from user, turns them into values to be added to an object
@@ -25,7 +19,7 @@ function grabEmployeeInfo() {
   let addID = $('#id').val();
   let addTitle = $('#title').val();
   let addAnnualSalary = $('#annualSalary').val();
-  
+ 
   //creates object
   const nep = {
     firstName: addFirst,
@@ -34,6 +28,8 @@ function grabEmployeeInfo() {
     title: addTitle,
     annualSalary: addAnnualSalary
   }
+
+  employeeSalaries.push(nep.annualSalary)
 
   //appends object info to DOM
   $('#newEmployee').append(
@@ -45,14 +41,12 @@ function grabEmployeeInfo() {
       <td>${nep.annualSalary}</td>
       <td><button id='getRid'>Delete</button></td>
      </tr>`);
-
-  
 }
 
 function totalMonthly() {
   let total = 0;
-  for (let i of employeeArray) {
-    total += Number(i.annualSalary);
+  for (let i of employeeSalaries) {
+    total += Number(i);
   }
   if (total < 20000) {
     let el = $('#mt');
@@ -69,6 +63,12 @@ function totalMonthly() {
   console.log('Total Monthly working');
 }
 
+// Deletes the row of the button you click
+function getRid() {
+  ($(this).parent().parent().remove());
+  console.log('this is', $(this).parent());
+  console.log('Get Rid is running');
+}
 
 // Adds those values to an object and inputs them into the addNewEmployee function
 // function newEmployee(addFirst, addLast, addID, addTitle, addAnnualSalary){
@@ -172,25 +172,25 @@ function totalMonthly() {
 // also the if monthly total if > 20,000 and appends monthly totals class and turns it's 
 // background red
 
-function totalMonthly() {
-  let total = 0;
-  for (let i of employeeArray) {
-    total += Number(i.annualSalary);
-  }
-  if (total < 20000) {
-    let el = $('#mt');
-    el.empty();
-    el.append(`<h4> Total Monthly: ` + Math.round(total/12) + `</h4>`)
-    $('.mt').addClass('white')
-  }
-  if (total >= 20000) {
-    let el = $('#mt');
-    el.empty();
-    el.append(`<h4> Total Monthly: ` + Math.round(total/12) + `</h4>`)
-    $('.mt').addClass('red')
-  }
-  console.log('Total Monthly working');
-}
+// function totalMonthly() {
+//   let total = 0;
+//   for (let i of employeeArray) {
+//     total += Number(i.annualSalary);
+//   }
+//   if (total < 20000) {
+//     let el = $('#mt');
+//     el.empty();
+//     el.append(`<h4> Total Monthly: ` + Math.round(total/12) + `</h4>`)
+//     $('.mt').addClass('white')
+//   }
+//   if (total >= 20000) {
+//     let el = $('#mt');
+//     el.empty();
+//     el.append(`<h4> Total Monthly: ` + Math.round(total/12) + `</h4>`)
+//     $('.mt').addClass('red')
+//   }
+//   console.log('Total Monthly working');
+// }
 
 
 
