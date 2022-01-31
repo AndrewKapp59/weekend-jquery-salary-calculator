@@ -2,7 +2,6 @@ $(document).ready(readyNow);
 
 console.log('JS Working');
 
-const maxEmployees = 10;
 employeeSalaries = []
 
 function readyNow(){
@@ -27,6 +26,7 @@ function NewEmployee() {
   if (addFirst === '' || addLast === '' || addID === '' || addTitle === '' || addAnnualSalary === '' ) {
       console.log('Error. Missing an Input');
       alert('Missing Input')
+      return;
   }
   //creates a new employee object i.e. neo
   const neo = {
@@ -61,7 +61,7 @@ function totalMonthly() {
     total += Number(i);
   }
 
-  //this if statements break sometimes. Some sort of bug
+  //this if statements breaks sometimes. Some sort of bug
   //it'll work initially and then after two dozen page refreshes it stops
   //if I comment it out and then back in that fixes it for some reason
   if (total >= 20000) {
@@ -79,7 +79,3 @@ function getRid() {
   console.log('Get Rid is running');
   console.log($(this).parent().parent(), 'has been deleted');
 }
-
-
-
-
