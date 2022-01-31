@@ -26,7 +26,6 @@ function NewEmployee() {
   if (addFirst === '' || addLast === '' || addID === '' || addTitle === '' || addAnnualSalary === '' ) {
       console.log('Error. Missing an Input');
       alert('Missing Input')
-      return;
   }
   //creates a new employee object i.e. neo
   const neo = {
