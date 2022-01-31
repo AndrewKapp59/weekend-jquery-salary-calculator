@@ -19,7 +19,15 @@ function NewEmployee() {
   let addID = $('#id').val();
   let addTitle = $('#title').val();
   let addAnnualSalary = $('#annualSalary').val();
-  
+  $('#firstName').val('');
+  $('#lastName').val('');
+  $('#id').val('');
+  $('#title').val('');
+  $('#annualSalary').val('');
+  if (addFirst === '' || addLast === '' || addID === '' || addTitle === '' || addAnnualSalary === '' ) {
+      console.log('Error. Missing an Input');
+      alert('Missing Input')
+  }
   //creates a new employee object i.e. neo
   const neo = {
     firstName: addFirst,
@@ -52,15 +60,10 @@ function totalMonthly() {
   for (let i of employeeSalaries) {
     total += Number(i);
   }
-  //these two if statements break sometimes. Some sort of bug
-  //They work initially and then after two dozen page refreshes they stop
-  //if I comment them out and then back in that fixes it for some reason
-  if (total < 20000) {
-    let el = $('#mt');
-    el.empty();
-    el.append(`<h4> Total Monthly: $` + Math.round(total/12) + `</h4>`)
-    $('.mt').addClass('white')
-  }
+
+  //this if statements break sometimes. Some sort of bug
+  //it'll work initially and then after two dozen page refreshes it stops
+  //if I comment it out and then back in that fixes it for some reason
   if (total >= 20000) {
     let el = $('#mt');
     el.empty();
