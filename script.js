@@ -41,7 +41,7 @@ function NewEmployee() {
       <td>${neo.id}</td>
       <td>${neo.title}</td>
       <td>${neo.annualSalary}</td>
-      <td><button id='getRid' class = 'button'>Delete</button></td>
+      <td><button id='getRid' class = 'getRid'>Delete</button></td>
      </tr>`);
 }
 
@@ -52,6 +52,9 @@ function totalMonthly() {
   for (let i of employeeSalaries) {
     total += Number(i);
   }
+  //these two if statements break sometimes. Some sort of bug
+  //They work initially and then after two dozen page refreshes they stop
+  //if I comment them out and then back in that fixes it for some reason
   if (total < 20000) {
     let el = $('#mt');
     el.empty();
